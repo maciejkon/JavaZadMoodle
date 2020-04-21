@@ -5,30 +5,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Phone phone1 = new Phone();
-        phone1.producer = "Apple";
-        phone1.model = "Iphone11";
-        phone1.screenSize = 6.1;
-        phone1.isAndroid = false;
+        Car car1 = new Car("Toyota", "Supra", "xyz12345", 100.0);
+        Phone phone1 = new Phone("Apple", "IPhone", 6.7, true);
+        Animal dog = new Animal("Azor", "dog");
+        Human me = new Human("Maciej", "Weltrowski", dog, phone1, car1);
 
-        Animal dog = new Animal("dog");
-        dog.name = "Azor";
+        System.out.println(me.firstName + " " + me.car.model + " " + me.car.producer);
 
-        Human me = new Human();
-        me.firstName = "Maciej";
-        me.lastName = "Weltrowski";
-        me.phone=phone1;
-        me.pet=dog;
-
-        dog.feed();
-        dog.walk();
-        dog.walk();
-        dog.walk();
-        dog.walk();
-        dog.walk();
-        dog.walk();
-        dog.walk();
-        dog.walk();
 
     }
 }
