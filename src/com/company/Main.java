@@ -10,8 +10,10 @@ public class Main {
         Animal dog = new Animal("Azor", "dog");
         Human me = new Human("Maciej", "Weltrowski", dog, phone1, car1);
 
-        System.out.println(me.firstName + " " + me.car.model + " " + me.car.producer);
-
+        me.setSalary(10.0);
+        me.getSalary();
+        me.setSalary(20.0);
+        me.getSalary();
 
     }
 }

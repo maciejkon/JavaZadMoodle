@@ -32,24 +32,27 @@ public class Animal {
     public boolean isAlive() {
         if (this.weight > 0) {
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     public void feed() {
         if (isAlive()) {
             weight += 2;
             System.out.println(this.name + " THX for food " + "my weight: " + this.weight);
+        } else {
+            System.out.println("OMG, your pet is dead!");
         }
-        System.out.println("OMG, your pet is dead!");
     }
 
     public void walk() {
         if (isAlive()) {
             weight -= 2.0;
             System.out.println(this.name + " THX for walk " + " my weight: " + this.weight);
+        } else {
+            System.out.println("OMG, your pet is dead!");
         }
-        System.out.println("OMG, your pet is dead!");
     }
 
 
