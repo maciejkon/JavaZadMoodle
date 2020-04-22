@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.devices.Car;
+import com.company.devices.Phone;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -19,7 +22,6 @@ public class Human {
         this.pet = pet;
         this.car = car;
     }
-
 
     public Double getSalary() {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -54,5 +56,9 @@ public class Human {
         } else {
             System.out.println("Zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
         }
+    }
+
+    public String toString() {
+        return this.firstName + " " + this.lastName;
     }
 }

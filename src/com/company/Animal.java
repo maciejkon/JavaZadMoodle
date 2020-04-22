@@ -30,11 +30,7 @@ public class Animal {
     }
 
     public boolean isAlive() {
-        if (this.weight > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.weight > 0;
     }
 
     public void feed() {
@@ -53,6 +49,10 @@ public class Animal {
         } else {
             System.out.println("OMG, your pet is dead!");
         }
+    }
+
+    public String toString() {
+        return this.name + " " + this.species;
     }
 
 
