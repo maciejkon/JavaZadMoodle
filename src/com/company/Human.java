@@ -2,14 +2,14 @@ package com.company;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+
 
 public class Human {
     final public String firstName;
     final public String lastName;
     Phone phone;
     Animal pet;
-    public Car car;
+    private Car car;
     private Double salary;
 
     public Human(String firstName, String lastName, Animal pet, Phone phone, Car car) {
@@ -38,5 +38,21 @@ public class Human {
             System.out.println("Nie możesz podać ujemnego dochodu!");
         }
 
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        if (car.value <= this.salary) {
+            System.out.println("Udało się kupić za gotówkę");
+            this.car = car;
+        } else if (car.value <= this.salary * 12) {
+            System.out.println("Udało się kupić na kredyt");
+            this.car = car;
+        } else {
+            System.out.println("Zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
+        }
     }
 }
