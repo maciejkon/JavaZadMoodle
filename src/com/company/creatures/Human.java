@@ -1,4 +1,4 @@
-package com.company;
+package com.company.creatures;
 
 import com.company.devices.Car;
 import com.company.devices.Phone;
@@ -11,10 +11,12 @@ public class Human extends Animal {
     final public String firstName;
     final public String lastName;
     private Phone phone;
-    Animal pet;
+    public Animal pet;
     private Car car;
     private Double salary;
     private Double money;
+
+    static final public Double DEFAULT_FOOD_WEIGHT = 1.0;
 
     public Human(String firstName, String lastName, Animal pet, Phone phone, Car car, Double salary, Double money) {
         super("Homo Sapiens");
@@ -26,6 +28,11 @@ public class Human extends Animal {
         this.car = car;
         this.salary = salary;
         this.money = money;
+    }
+
+    @Override
+    public void feed() {
+        feed(DEFAULT_FOOD_WEIGHT);
     }
 
     @Override
