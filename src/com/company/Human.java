@@ -7,20 +7,30 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-public class Human {
+public class Human extends Animal {
     final public String firstName;
     final public String lastName;
-    Phone phone;
+    private Phone phone;
     Animal pet;
     private Car car;
     private Double salary;
+    private Double money;
 
-    public Human(String firstName, String lastName, Animal pet, Phone phone, Car car) {
+    public Human(String firstName, String lastName, Animal pet, Phone phone, Car car, Double salary, Double money) {
+        super("Homo Sapiens");
+        this.weight = 89.0;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.pet = pet;
         this.car = car;
+        this.salary = salary;
+        this.money = money;
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double value) throws Exception {
+        throw new Exception("You cannot sell human!");
     }
 
     public Double getSalary() {
@@ -47,18 +57,38 @@ public class Human {
     }
 
     public void setCar(Car car) {
-        if (car.value <= this.salary) {
-            System.out.println("Udało się kupić za gotówkę");
-            this.car = car;
-        } else if (car.value <= this.salary * 12) {
-            System.out.println("Udało się kupić na kredyt");
-            this.car = car;
+        if (car != null) {
+            if (car.value <= this.salary) {
+                System.out.println("Udało się kupić za gotówkę");
+                this.car = car;
+            } else if (car.value <= this.salary * 12) {
+                System.out.println("Udało się kupić na kredyt");
+                this.car = car;
+            } else {
+                System.out.println("Zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
+            }
         } else {
-            System.out.println("Zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
+            this.car = null;
         }
     }
 
     public String toString() {
         return this.firstName + " " + this.lastName;
+    }
+
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
+    }
+
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
     }
 }
