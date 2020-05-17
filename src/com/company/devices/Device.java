@@ -25,6 +25,5 @@ public abstract class Device implements Saleable {
 
     @Override
     public void sell(Human seller, Human buyer, Double value) throws Exception {
-
     }
 }

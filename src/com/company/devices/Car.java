@@ -2,7 +2,7 @@ package com.company.devices;
 
 import com.company.creatures.Human;
 
-public class Car extends Device {
+public abstract class Car extends Device {
 
     public String plates;
 
@@ -10,6 +10,8 @@ public class Car extends Device {
         super(producer, model, yearOfProduction, value);
         this.plates = plates;
     }
+
+    public abstract void refuel();
 
     @Override
     public void sell(Human seller, Human buyer, Double value) throws Exception {
