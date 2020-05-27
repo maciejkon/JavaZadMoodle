@@ -5,6 +5,7 @@ import com.company.devices.Phone;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 
 public class Human extends Animal {
@@ -12,22 +13,35 @@ public class Human extends Animal {
     final public String lastName;
     private Phone phone;
     public Animal pet;
-    private Car car;
+    private Car[] garage;
     private Double salary;
     private Double money;
 
     static final public Double DEFAULT_FOOD_WEIGHT = 1.0;
+    static final public Integer DEFAULT_GARAGE_SIZE = 1;
 
-    public Human(String firstName, String lastName, Animal pet, Phone phone, Car car, Double salary, Double money) {
+    public Human(String firstName, String lastName, Animal pet, Phone phone, Double salary, Double money) {
         super("Homo Sapiens");
         this.weight = 89.0;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.pet = pet;
-        this.car = car;
         this.salary = salary;
         this.money = money;
+        this.garage = new Car[DEFAULT_GARAGE_SIZE];
+    }
+
+    public Human(String firstName, String lastName, Animal pet, Phone phone, Double salary, Double money, Integer garageSize) {
+        super("Homo Sapiens");
+        this.weight = 89.0;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.pet = pet;
+        this.salary = salary;
+        this.money = money;
+        this.garage = new Car[garageSize];
     }
 
     @Override
@@ -59,24 +73,81 @@ public class Human extends Animal {
 
     }
 
-    public Car getCar() {
-        return car;
+    public Car getCar(Integer numberOfCar) {
+        return this.garage[numberOfCar];
     }
 
-    public void setCar(Car car) {
+    public void setCar(Car car, Integer numberOfCar) {
         if (car != null) {
-            if (car.value <= this.salary) {
+            if (car.getValue() <= this.salary) {
                 System.out.println("Udało się kupić za gotówkę");
-                this.car = car;
-            } else if (car.value <= this.salary * 12) {
+                this.garage[numberOfCar] = car;
+            } else if (car.getValue() <= this.salary * 12) {
                 System.out.println("Udało się kupić na kredyt");
-                this.car = car;
+                this.garage[numberOfCar] = car;
             } else {
                 System.out.println("Zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
             }
         } else {
-            this.car = null;
+            this.garage[numberOfCar] = null;
         }
+    }
+
+    public Car[] getGarage() {
+        return this.garage;
+    }
+
+    public Double sumValue() {
+        Double valueOfCars = 0.0;
+        for (Car car : garage) {
+            if (car != null) {
+                valueOfCars += car.getValue();
+            }
+        }
+        return valueOfCars;
+    }
+
+    public boolean hasCar(Car carId) {
+        for (Car car : garage) {
+            if (car == carId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hasSpace() {
+        for (Car car : garage) {
+            if (car == null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeCar(Car carToRemove) {
+        for (int i = 0; i < this.garage.length; i++) {
+            if (this.garage[i] == carToRemove) {
+                this.garage[i] = null;
+            }
+        }
+    }
+
+    public void addCar(Car carToAdd) throws Exception {
+        if (!this.hasSpace()) {
+            throw new Exception("Has no place for this car!");
+        }
+        for (int i = 0; i < this.garage.length; i++) {
+            if (this.garage[i] == null) {
+                this.garage[i] = carToAdd;
+                break;
+            }
+        }
+
+    }
+
+    public void sortCar() {
+        Arrays.sort(garage);
     }
 
     public String toString() {
