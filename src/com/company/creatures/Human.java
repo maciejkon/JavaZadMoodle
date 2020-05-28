@@ -30,6 +30,7 @@ public class Human extends Animal {
         this.salary = salary;
         this.money = money;
         this.garage = new Car[DEFAULT_GARAGE_SIZE];
+
     }
 
     public Human(String firstName, String lastName, Animal pet, Phone phone, Double salary, Double money, Integer garageSize) {
@@ -79,14 +80,14 @@ public class Human extends Animal {
 
     public void setCar(Car car, Integer numberOfCar) {
         if (car != null) {
+
             if (car.getValue() <= this.salary) {
-                System.out.println("Udało się kupić za gotówkę");
                 this.garage[numberOfCar] = car;
+
             } else if (car.getValue() <= this.salary * 12) {
-                System.out.println("Udało się kupić na kredyt");
                 this.garage[numberOfCar] = car;
             } else {
-                System.out.println("Zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
+                System.out.println(" ");
             }
         } else {
             this.garage[numberOfCar] = null;

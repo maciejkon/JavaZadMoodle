@@ -6,8 +6,6 @@ import com.company.creatures.Human;
 import com.company.creatures.Pet;
 import com.company.devices.*;
 
-import java.util.Arrays;
-
 public class Main {
 
 
@@ -31,31 +29,27 @@ public class Main {
         Human brother = new Human("Adrian", "Kowalczyk", null, null, 1000.0, 500000.0);
         Human wife = new Human("Anna", "Kowalska", pig, phone2, 100.0, 500.0, 3);
 
-        wife.setCar(car4, 0);
-        wife.setCar(car5, 1);
-        wife.setCar(car6, 2);
-
-        System.out.println(wife.sumValue());
-        System.out.println(Arrays.toString(wife.getGarage()));
-        wife.sortCar();
-        System.out.println(Arrays.toString(wife.getGarage()));
-
-        System.out.println(Arrays.toString(me.getGarage()));
-        System.out.println(me.getMoney());
-        System.out.println(Arrays.toString(wife.getGarage()));
-        System.out.println(wife.getMoney());
+        wife.setCar(car1, 0);
+        wife.setCar(car2, 1);
 
         try {
-            car4.sell(wife, me, 2.0);
+            car1.sell(wife, me, 2.0);
+            System.out.println(car1.actualOwner());
+
+            car1.sell(me, wife, 30.0);
+            System.out.println(car1.actualOwner());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        System.out.println(Arrays.toString(me.getGarage()));
-        System.out.println(me.getMoney());
-
-        System.out.println(Arrays.toString(wife.getGarage()));
-        System.out.println(wife.getMoney());
+        System.out.println(car1.ownerList);
+        System.out.println(car1.wasAnOwner(wife));
+        System.out.println(car1.hasBeenSell(wife, me));
+        System.out.println(car1.hasBeenSell(me, wife));
+        System.out.println(car1.wasLastOwner(wife));
+        System.out.println(car1.wasLastOwner(me));
+        System.out.println(car1.numberOfTransactions());
 
 
     }
